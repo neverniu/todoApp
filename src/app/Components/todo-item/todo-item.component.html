@@ -1,0 +1,20 @@
+<div class="todoItem">
+    <div *ngIf="!isEdit else editForm">
+        <p *ngIf="!todo.isComplete else finishedTodo">{{todo.title}}</p>
+    </div>
+
+    <ng-template #finishedTodo>
+      <del>{{todo.title}}</del>
+    </ng-template>
+
+    <ng-template #editForm>
+        <input type="text" [(ngModel)]="title" name="title" id="title" />
+        <button (click)="onClickUpdateToDo()">💿</button>
+    </ng-template>
+
+    <div class="itemButtons">
+      <button (click)="onClickEditTodo()">✏️</button>
+      <button (click)="onClickToggle(index)">✔️</button>
+      <button (click)="onClickDeleteToDo(index)">❌</button>
+    </div>
+</div>
